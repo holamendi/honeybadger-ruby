@@ -55,7 +55,7 @@ module Honeybadger
       init_logging!
       init_backend!
 
-      logger.info(sprintf('Initializing Honeybadger Error Tracker for Ruby. Ship it! version=%s framework=%s', Honeybadger::VERSION, detected_framework))
+      logger.info(sprintf('Initializing Honeybadger Error Tracker for Ruby. Ship it! version=%s framework=%s', Honeybadger::VERSION, detected_framework)) unless disable_init_message?
       logger.warn('Development mode is enabled. Data will not be reported until you deploy your app.') if warn_development?
 
       self
@@ -374,6 +374,10 @@ module Honeybadger
 
     def init_logging!
       @logger = Logging::ConfigLogger.new(self, build_logger)
+    end
+
+    def disable_init_message?
+      ENV['HONEYBADGER_DISABLE_INIT_MESSAGE']
     end
 
     # Takes an Array and a value and returns true if the value exists in the
