@@ -5,6 +5,10 @@ adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [5.2.1] - 2023-03-14
+### Fixed
+- Remove ANSI escape codes from detailed error message in Ruby 3.2 (#473)
+
 ## [5.2.0] - 2023-02-28
 ### Added
 - First-class support for Hanami (#470)
